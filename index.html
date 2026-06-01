@@ -196,13 +196,14 @@
           <form
             class="booking-form"
             id="booking-form"
-            action="https://formsubmit.co/Shamynpro@gmail.com"
+            action="https://api.web3forms.com/submit"
             method="post"
           >
-            <input type="hidden" name="_subject" value="Nouvelle demande de booking - Shamy">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" id="form-next" name="_next" value="">
+            <input type="hidden" name="access_key" value="dfb72ff6-ff1e-41c3-a7f5-b4ad7f6306fc">
+            <input type="hidden" name="subject" value="Nouvelle demande de booking - Shamy">
+            <input type="hidden" name="from_name" value="Site web de Shamy">
+            <input type="hidden" name="redirect" value="https://shhamy.github.io/Shamy---Site/merci.html">
+            <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <label for="booking-name">Nom et prénom</label>
               <input id="booking-name" name="name" type="text" autocomplete="name" required>
