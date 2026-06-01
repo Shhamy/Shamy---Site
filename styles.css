@@ -414,6 +414,27 @@ dd {
   padding-top: clamp(44px, 6vw, 78px);
 }
 
+.section-pro-proof {
+  background: #0d0e12;
+}
+
+.proof-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.9fr);
+  gap: clamp(24px, 5vw, 62px);
+  align-items: start;
+}
+
+.proof-layout p {
+  max-width: 680px;
+  color: #d5dce5;
+  font-size: 1.08rem;
+}
+
+.proof-card {
+  min-height: auto;
+}
+
 .section-media {
   background: #0d0e12;
 }
@@ -648,7 +669,8 @@ dd {
   .hero,
   .event-feature,
   .section-bio,
-  .section-contact {
+  .section-contact,
+  .proof-layout {
     grid-template-columns: 1fr;
   }
 
