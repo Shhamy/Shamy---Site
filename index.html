@@ -196,11 +196,13 @@
           <form
             class="booking-form"
             id="booking-form"
-            action="https://formsubmit.co/ajax/Shamynpro@gmail.com"
+            action="https://formsubmit.co/Shamynpro@gmail.com"
             method="post"
           >
             <input type="hidden" name="_subject" value="Nouvelle demande de booking - Shamy">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" id="form-next" name="_next" value="">
             <div class="form-row">
               <label for="booking-name">Nom et prénom</label>
               <input id="booking-name" name="name" type="text" autocomplete="name" required>
@@ -215,7 +217,6 @@
             </div>
             <button class="button button-primary" type="submit">Envoyer la demande</button>
           </form>
-          <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
           <p class="contact-email">Ou directement : <a href="mailto:Shamynpro@gmail.com">Shamynpro@gmail.com</a></p>
           <div class="social-links" aria-label="Liens sociaux">
             <a href="https://www.instagram.com/shamynt_/">Instagram</a>
