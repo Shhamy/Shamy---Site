@@ -134,6 +134,7 @@ h3 {
 
 .hero-copy {
   max-width: 690px;
+  min-width: 0;
 }
 
 .eyebrow,
@@ -149,8 +150,9 @@ h3 {
 h1 {
   max-width: 820px;
   margin: 0;
-  font-size: clamp(3.5rem, 9vw, 8.8rem);
+  font-size: clamp(3.4rem, 7.4vw, 7.6rem);
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 .hero-text {
