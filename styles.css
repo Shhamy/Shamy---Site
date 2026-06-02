@@ -174,7 +174,7 @@ h3 {
 h1 {
   max-width: 820px;
   margin: 0;
-  font-size: clamp(3.1rem, 6.2vw, 6.4rem);
+  font-size: clamp(2.8rem, 5vw, 5.4rem);
   text-transform: uppercase;
   overflow-wrap: break-word;
 }
@@ -287,7 +287,7 @@ h1 {
 
 h2 {
   margin: 0;
-  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-size: clamp(2.1rem, 4vw, 4rem);
   text-transform: uppercase;
 }
 
@@ -802,7 +802,7 @@ dd {
 
 @media (max-width: 960px) {
   h1 {
-    font-size: clamp(3.2rem, 10vw, 6.4rem);
+    font-size: clamp(2.9rem, 9vw, 5.4rem);
   }
 
   .site-header {
@@ -847,7 +847,7 @@ dd {
 
 @media (max-width: 650px) {
   h1 {
-    font-size: clamp(3.1rem, 14vw, 5.5rem);
+    font-size: clamp(2.8rem, 12vw, 4.8rem);
   }
 
   .header-cta {
