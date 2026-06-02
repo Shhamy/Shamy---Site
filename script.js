@@ -1,6 +1,4 @@
 window.addEventListener("load", () => {
-  document.body.classList.add("page-enter");
-
   if (window.instgrm) {
     window.instgrm.Embeds.process();
   }
@@ -77,48 +75,67 @@ const revealObserver = new IntersectionObserver(
 
 animatedElements.forEach((element) => revealObserver.observe(element));
 
-document.querySelectorAll('a[href^="#"], a[href*=".html#"]').forEach((link) => {
+const highlightSection = (target) => {
+  target.classList.remove("section-flash");
+  void target.offsetWidth;
+  target.classList.add("section-flash");
+};
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", () => {
-    const targetId = link.hash;
+    const target = document.querySelector(link.hash);
 
-    if (!targetId) {
+    if (!target) {
       return;
     }
 
-    window.setTimeout(() => {
-      const target = document.querySelector(targetId);
+    window.setTimeout(() => highlightSection(target), 520);
+  });
+});
 
-      if (!target) {
-        return;
+const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
+const pageName = window.location.pathname.split("/").pop() || "index.html";
+const sectionLinks = navLinks.filter((link) => link.hash && link.pathname.endsWith(pageName));
+const observedSections = sectionLinks
+  .map((link) => document.querySelector(link.hash))
+  .filter(Boolean);
+
+const setActiveNav = (activeHref) => {
+  navLinks.forEach((link) => {
+    const linkHref = link.getAttribute("href");
+    const isSamePageLink = link.pathname.endsWith(pageName) && link.hash;
+    const normalizedHref = isSamePageLink ? link.hash : linkHref;
+
+    link.classList.toggle("is-active", normalizedHref === activeHref);
+  });
+};
+
+if (pageName === "pro.html") {
+  setActiveNav("pro.html");
+} else if (pageName === "medias.html") {
+  setActiveNav("medias.html");
+} else if (observedSections.length) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visibleEntry) {
+        setActiveNav(`#${visibleEntry.target.id}`);
       }
-
-      target.classList.remove("section-flash");
-      void target.offsetWidth;
-      target.classList.add("section-flash");
-    }, 450);
-  });
-});
-
-document.querySelectorAll("a[href]").forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const href = link.getAttribute("href");
-
-    if (
-      !href ||
-      href.startsWith("#") ||
-      href.startsWith("mailto:") ||
-      href.startsWith("http") ||
-      link.target === "_blank"
-    ) {
-      return;
+    },
+    {
+      rootMargin: "-34% 0px -50% 0px",
+      threshold: [0.12, 0.28, 0.5]
     }
+  );
 
-    event.preventDefault();
-    document.body.classList.remove("page-enter");
-    document.body.classList.add("page-exit");
+  observedSections.forEach((section) => sectionObserver.observe(section));
 
-    window.setTimeout(() => {
-      window.location.href = href;
-    }, 230);
-  });
-});
+  if (window.location.hash) {
+    setActiveNav(window.location.hash);
+  } else {
+    setActiveNav("#bio");
+  }
+}
